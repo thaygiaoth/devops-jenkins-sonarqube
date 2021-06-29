@@ -3,6 +3,7 @@ node {
     def SONARQUBE_HOSTNAME = 'sonarqube'
     
     // Nhớ cài gradle-4.10.2 trong Manage Jenkins --> Global Tool Configuration --> Gradle --> Add Gradle: name: gradle-4.10.2, Version: Gradle 4.10.2
+    // Xem version của gradle: docker exec jenkins /var/jenkins_home/tools/hudson.plugins.gradle.GradleInstallation/gradle-4.10.2/bin/gradle --version
     def GRADLE_HOME = tool name: 'gradle-4.10.2', type: 'hudson.plugins.gradle.GradleInstallation'
     sh "${GRADLE_HOME}/bin/gradle tasks"
 
