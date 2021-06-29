@@ -24,6 +24,8 @@ node {
       // Sonarqube http://ip:9000 admin/admin --> chữ A bên phải trên cùng --> My Account --> Security --> Generate Tokens đặt tên tùy ý thí chủ
       withCredentials([string(credentialsId: 'sonar', variable: 'sonarLogin')]) {
         // Manage Jenkins --> Global Tool Configuration --> SonarQube Scanner --> Add SonarQube Scanner --> name: sonar, Version: mới nhất
+        // Xem lại thành quả cài 2 ông tướng này nằm ở đâu: docker exec jenkins ls -l /var/jenkins_home/tools/
+        // Xem version của Sonarqube scanner:               docker exec jenkins /var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar/bin/sonar-scanner --version 
         sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://${SONARQUBE_HOSTNAME}:9000 -Dsonar.login=${sonarLogin} -Dsonar.projectName=WebApp -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=GS -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.java.binaries=build/**/* -Dsonar.language=java"
       }
     }
