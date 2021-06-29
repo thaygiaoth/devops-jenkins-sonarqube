@@ -17,7 +17,6 @@ node {
     }
 
     stage('sonar-scanner') {
-      
       def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
       // Manage Jenkins --> Credentials --> global --> Add credentials --> Kind 
       // tạo 1 cái Secret text: ID tên sonar, Secret là token sinh ra từ Sonarqube
